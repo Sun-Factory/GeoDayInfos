@@ -1,42 +1,119 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <script src="path/to/ICanSeeMyHouseFromHere.js"></script>
-  <style>
-    /* Styles pour centrer le globe dans la page */
-    #globe-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh; /* Prend toute la hauteur de la fenêtre */
+<script src="https://github.com/mourner/suncalc/blob/6bc2757074c1e5eaa2389aa2ab36806f04c6d2a0/suncalc.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+ <script>
+    function getCoordinates() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showCoordinates);
+      } else {
+        document.getElementById("coordinates").innerHTML = "Geolocation is not supported by this browser.";
+      }
     }
-  </style>
-</head>
-<body>
-  <div id="globe-container">
-    <canvas id="globe"></canvas>
-  </div>
 
-  <script>
-    var globe = new ICanSeeMyHouseFromHere({
-      canvas: 'globe',
-      image: 'path/to/image/of/earth.jpg', // L'image du globe
-      autoRotate: true, // Fait tourner automatiquement le globe
-      autoRotateSpeed: 0.2, // Vitesse de rotation (en radians par frame)
-    });
-    globe.start(); // Démarre l'animation
+    function showCoordinates(position) {
+     // Récupération des valeurs saisies par l'utilisateur
+		var latitude = document.getElementById("latitude").value;
+		var longitude = document.getElementById("longitude").value;
+	    document.getElementById('latitude').value = position.coords.latitude;
+        document.getElementById('longitude').value = position.coords.longitude;
+	 // Récupération de la date saisie par l'utilisateur
+		var date = new Date();
+	}
+    getCoordinates();
   </script>
-  
-  <div id="globe"></div>
+</head>
 
-<script src="https://cdn.jsdelivr.net/npm/icseemyhousefromhere@1.0.0/dist/icseemyhousefromhere.min.js"></script>
+
+<body>
+
+      <img src="./logo_sun_made.svg" >
+
+<div>
+<input type="date" id="date" value="10/10/2023">
+</div>	
+
+  
+<div id="suncalc-results">
+ <form>
+      <label><input type="text" id="latitude" placeholder="Entrez la latitude"></label>
+      <label><input type="text" id="longitude" placeholder="Entrez la longitude"></label>
+</form>
+
+
 <script>
-  var globe = new ICanSeeMyHouseFromHere("globe", {
-    lat: 45.5231,
-    lng: -122.6765,
-    zoom: 8,
-    style: "dark"
-  });
+    var today = new Date();
+    var isoDate = today.toISOString().substring(0, 10);
+    document.getElementById("date").value = isoDate;
 </script>
 
+	<div 
+	<button id="submit-button" onclick="calculateSunData(); event.preventDefault();">Refresh</button>
+	</div>
+	
+<table id="suncalc-table">
+	  <tr>
+		<th>Aube</th>
+		<td id="dawn-time"></td>
+	  </tr>
+	  <tr>
+		<th>Lever de soleil</th>
+		<td id="sunrise-time"></td>
+	  </tr>
+	  <tr>
+		<th>Soleil le plus haut</th>
+		<td id="solar-noon-time"></td>
+	  </tr>
+	  <tr>
+		<th>Coucher de soleil</th>
+		<td id="sunset-time"></td>
+	  </tr>
+		<tr>
+		<th>Crépuscule</th>
+		<td id="dusk-time"></td>
+	  </tr>
+</table>
+
+
+
+</div>
+
 </body>
+
+   <script>
+    // Afficher la date du jour par défaut
+    var today = new Date();
+    document.getElementById("date").value = today.toISOString().slice(0, 10);
+
+    function calculateSunData() {
+      // Récupération des valeurs saisies par l'utilisateur
+      var latitude = document.getElementById("latitude").value;
+      var longitude = document.getElementById("longitude").value;
+      var date = new Date(document.getElementById("date").value);
+
+      // Récupération de toutes les données de SunCalc pour cette date et ces coordonnées
+      var sunData = SunCalc.getTimes(date, latitude, longitude);
+  
+  // Afficher les données dans la table
+  document.getElementById("sunrise-time").innerHTML = sunData.sunrise.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+  document.getElementById("solar-noon-time").innerHTML = sunData.solarNoon.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+  document.getElementById("sunset-time").innerHTML = sunData.sunset.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+  
+  var dawn = SunCalc.getTimes(date, latitude, longitude).dawn;
+var dusk = SunCalc.getTimes(date, latitude, longitude).dusk;
+document.getElementById("dawn-time").innerHTML = dawn.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+document.getElementById("dusk-time").innerHTML = dusk.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});  
+	
+	// Récupération de la position de la source de lumière (soleil)
+    var sunPos = SunCalc.getPosition(date, latitude, longitude);
+    // calcul de l'angle solaire au zénith
+    var solarZenith = 90 - sunPos.altitude;
+    // Affichage de l'angle solaire au zénith
+    document.getElementById("solar-zenith").innerHTML = solarZenith + "°";
+	
+	}
+  </script>
+  
 </html>
