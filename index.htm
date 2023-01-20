@@ -1,0 +1,42 @@
+<html>
+<head>
+  <script src="path/to/ICanSeeMyHouseFromHere.js"></script>
+  <style>
+    /* Styles pour centrer le globe dans la page */
+    #globe-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    }
+  </style>
+</head>
+<body>
+  <div id="globe-container">
+    <canvas id="globe"></canvas>
+  </div>
+
+  <script>
+    var globe = new ICanSeeMyHouseFromHere({
+      canvas: 'globe',
+      image: 'path/to/image/of/earth.jpg', // L'image du globe
+      autoRotate: true, // Fait tourner automatiquement le globe
+      autoRotateSpeed: 0.2, // Vitesse de rotation (en radians par frame)
+    });
+    globe.start(); // Démarre l'animation
+  </script>
+  
+  <div id="globe"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/icseemyhousefromhere@1.0.0/dist/icseemyhousefromhere.min.js"></script>
+<script>
+  var globe = new ICanSeeMyHouseFromHere("globe", {
+    lat: 45.5231,
+    lng: -122.6765,
+    zoom: 8,
+    style: "dark"
+  });
+</script>
+
+</body>
+</html>

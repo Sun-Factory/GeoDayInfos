@@ -1,0 +1,130 @@
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'ma police', sans-serif;
+}
+
+form {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+	display: flex;
+	width: 100%;
+    
+}
+img {
+	display: flex;
+    margin-top: 20px; 
+	width: 250px;
+    text-align:center;
+	margin-bottom: 10px;
+
+
+}
+
+input[type="text"] {
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 1.5em;
+	text-align:center;
+}
+#date {
+	width: 90%;
+    padding: 10px;
+    font-size: 2em;
+	border:0px;
+	text-align:center;
+    color: gray;
+    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
+	
+}
+
+#submit-button {
+	width: 100%;
+    padding: 10px;
+    font-size: 2em;
+	text-align:center;
+    background-color: #9b7653;
+    color: white;
+    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
+}
+
+#result {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+body {
+  background-color: black;
+  text-align: center;
+}
+#logo-container {
+  margin-top: 50px;
+}
+#suncalc-results {
+  margin-top: 50px;
+  color: white;
+}
+input, button {
+  margin-top: 20px;
+}
+
+.full-width-input {
+    width: 100%; /* prend toute la largeur de l'écran */
+    font-size: 3; /* taille de police de 2em */
+	text-align: center;
+}
+
+
+#result {
+    width: 100%; /* prend toute la largeur de l'écran */
+    font-size: 2em; /* taille de police de 2em */
+}
+
+
+table {
+	width: 100%;
+    padding: 10px;
+    font-size: 2em;
+	border:0px;
+	text-align:center;
+    color: gray;
+    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
+    margin-top: 20px;
+	font-size: 2em; /* taille de police de 2em */
+}
+th {
+  width: 50%; /* Pour que chaque colonne occupe la moitié de la largeur du tableau */
+  text-align: left; /* Pour aligner le texte à gauche dans la première colonne */
+}
+td {
+  width: 50%; /* Pour que chaque colonne occupe la moitié de la largeur du tableau */
+  text-align: right; /* Pour centrer les valeurs dans la deuxième colonne */
+}
+
+#solar-zenith {
+    margin-top: 20px;
+}
+
+#text {
+    padding: 10px;
+    font-size: 2em;
+	border:0px;
+	text-align:center;
+    color: gray;
+    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
+    margin-top: 20px;
+	font-size: 2em; /* taille de police de 2em */
+	
+}
+
+
+
+
+
