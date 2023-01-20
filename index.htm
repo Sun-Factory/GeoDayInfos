@@ -4,6 +4,8 @@
 <script src="./Suncalc/suncalc.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
+
+
  <script>
     function getCoordinates() {
       if (navigator.geolocation) {
@@ -29,19 +31,17 @@
 
 <body>
 
-      <img src="./logo_sun_made.svg" >
+      <img src="./pics/Earth.png" id="image_entete">
 
 <div>
 <input type="date" id="date" value="10/10/2023">
 </div>	
 
-  
 <div id="suncalc-results">
  <form>
       <label><input type="text" id="latitude" placeholder="Entrez la latitude"></label>
       <label><input type="text" id="longitude" placeholder="Entrez la longitude"></label>
 </form>
-
 
 <script>
     var today = new Date();
@@ -49,40 +49,82 @@
     document.getElementById("date").value = isoDate;
 </script>
 
+
 	<div 
 	<button id="submit-button" onclick="calculateSunData(); event.preventDefault();">Refresh</button>
 	</div>
 	
-<table id="suncalc-table">
-	  <tr>
-		<th>Aube</th>
-		<td id="dawn-time"></td>
-	  </tr>
-	  <tr>
-		<th>Lever de soleil</th>
-		<td id="sunrise-time"></td>
-	  </tr>
-	  <tr>
-		<th>Soleil le plus haut</th>
+	
+<table>
+  <tr>
+    <td rowspan="5" id="col_image"><img src="./pics/sun.png" id="Image_sun"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+	<td>Sunrise</td>
+	<td id="dawn-time"></td>
+	<td id="separateur">-</td>
+	<td id="sunrise-time"></td>
+
+
+  </tr>
+  	  <tr>
+		<td>Zenith</td>
 		<td id="solar-noon-time"></td>
+		<td></td>
+		<td></td>
 	  </tr>
+  
 	  <tr>
-		<th>Coucher de soleil</th>
+		<td>Sunset</td>
 		<td id="sunset-time"></td>
-	  </tr>
-		<tr>
-		<th>Crépuscule</th>
+		<td>-</td>
 		<td id="dusk-time"></td>
+	  </tr>
+</table>
+	
+<table>
+  <tr>
+    <td rowspan="5" id="col_image"><img src="./pics/Full_moon.png" id="Image_moon"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+	<td>Moonrise</td>
+	<td id="moonrise-time"></td>
+  </tr> 
+	  <tr>
+		<td>Moonset</td>
+		<td id="moonset-time"></td>
+	  </tr>
+</table>
+
+<table>
+  <tr>
+    <td rowspan="5" id="col_image"><img src="./pics/ocean.png" id="Image_ocean"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+	<td>High Tide</td>
+	<td id="moonrise-time"></td>
+  </tr> 
+	  <tr>
+		<td>Low Tide</td>
+		<td id="moonset-time"></td>
 	  </tr>
 </table>
 
 
-
-</div>
-
-</body>
-
    <script>
+   // Calculs solaires
     // Afficher la date du jour par défaut
     var today = new Date();
     document.getElementById("date").value = today.toISOString().slice(0, 10);
@@ -92,28 +134,43 @@
       var latitude = document.getElementById("latitude").value;
       var longitude = document.getElementById("longitude").value;
       var date = new Date(document.getElementById("date").value);
+	  
 
       // Récupération de toutes les données de SunCalc pour cette date et ces coordonnées
       var sunData = SunCalc.getTimes(date, latitude, longitude);
   
-  // Afficher les données dans la table
-  document.getElementById("sunrise-time").innerHTML = sunData.sunrise.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
-  document.getElementById("solar-noon-time").innerHTML = sunData.solarNoon.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
-  document.getElementById("sunset-time").innerHTML = sunData.sunset.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+	  // Afficher les données dans la table
+	  document.getElementById("sunrise-time").innerHTML = sunData.sunrise.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+	  document.getElementById("solar-noon-time").innerHTML = sunData.solarNoon.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+	  document.getElementById("sunset-time").innerHTML = sunData.sunset.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
   
-  var dawn = SunCalc.getTimes(date, latitude, longitude).dawn;
-var dusk = SunCalc.getTimes(date, latitude, longitude).dusk;
-document.getElementById("dawn-time").innerHTML = dawn.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
-document.getElementById("dusk-time").innerHTML = dusk.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});  
-	
-	// Récupération de la position de la source de lumière (soleil)
-    var sunPos = SunCalc.getPosition(date, latitude, longitude);
-    // calcul de l'angle solaire au zénith
-    var solarZenith = 90 - sunPos.altitude;
-    // Affichage de l'angle solaire au zénith
-    document.getElementById("solar-zenith").innerHTML = solarZenith + "°";
-	
-	}
+	  var dawn = SunCalc.getTimes(date, latitude, longitude).dawn;
+	  var dusk = SunCalc.getTimes(date, latitude, longitude).dusk;
+	  document.getElementById("dawn-time").innerHTML = dawn.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+	  document.getElementById("dusk-time").innerHTML = dusk.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});  
+    
+	  
+
+	 
+// Obtenha as informações da lua para a data atual e as coordenadas geográficas atuais
+	var lunarTimes = SunCalc.getMoonTimes(date, latitude, longitude);
+
+	// Extraia os valores
+	var moonriseTime = lunarTimes.rise;
+	var moonsetTime = lunarTimes.set;
+	var moonNoonTime = lunarTimes.transit;
+
+
+	// Defina os elementos HTML que exibirão as informações
+	var moonriseTimeElement = document.getElementById("moonrise-time");
+	var moonsetTimeElement = document.getElementById("moonset-time");
+	var moonNoonTimeElement = document.getElementById("moon-noon-time");
+
+	// Atribua os tempos extraídos aos elementos HTML
+	moonriseTimeElement.innerHTML = moonriseTime.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+	moonsetTimeElement.innerHTML = moonsetTime.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+	moonNoonTimeElement.innerHTML = moonNoonTime.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+}
   </script>
   
 </html>

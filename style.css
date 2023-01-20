@@ -19,13 +19,45 @@ form {
 img {
 	display: flex;
     margin-top: 20px; 
-	width: 250px;
+	width: 450px;
     text-align:center;
 	margin-bottom: 10px;
 
 
 }
 
+#image_entete{
+	display: flex;
+    margin-top: 20px; 
+	width: 70%;
+    text-align:center;
+	margin-bottom: 10px;
+}
+
+#Image_sun {
+	display: flex;
+    margin-top: 20px; 
+	width: 80%;
+    text-align:center;
+	margin-bottom: 10px;
+}
+
+
+#Image_moon {
+	display: flex;
+    margin-top: 20px; 
+	width: 70%;
+    text-align:center;
+	margin-bottom: 10px;
+}
+
+#Image_ocean {
+	display: flex;
+    margin-top: 20px; 
+	width: 70%;
+    text-align:center;
+	margin-bottom: 10px;
+}
 input[type="text"] {
     margin: 0 10px;
     padding: 10px;
@@ -48,17 +80,12 @@ input[type="text"] {
     padding: 10px;
     font-size: 2em;
 	text-align:center;
-    background-color: #9b7653;
+    background-color: gray;
     color: white;
     margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
 }
 
-#result {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+
 }
 body {
   background-color: black;
@@ -67,7 +94,7 @@ body {
 #logo-container {
   margin-top: 50px;
 }
-#suncalc-results {
+#Coordonnes {
   margin-top: 50px;
   color: white;
 }
@@ -75,54 +102,36 @@ input, button {
   margin-top: 20px;
 }
 
-.full-width-input {
-    width: 100%; /* prend toute la largeur de l'écran */
-    font-size: 3; /* taille de police de 2em */
-	text-align: center;
-}
-
-
-#result {
-    width: 100%; /* prend toute la largeur de l'écran */
-    font-size: 2em; /* taille de police de 2em */
-}
-
-
 table {
 	width: 100%;
     padding: 10px;
     font-size: 2em;
 	border:0px;
-	text-align:center;
+	text-align:left;
     color: gray;
     margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
     margin-top: 20px;
-	font-size: 2em; /* taille de police de 2em */
-}
-th {
-  width: 50%; /* Pour que chaque colonne occupe la moitié de la largeur du tableau */
-  text-align: left; /* Pour aligner le texte à gauche dans la première colonne */
-}
-td {
-  width: 50%; /* Pour que chaque colonne occupe la moitié de la largeur du tableau */
-  text-align: right; /* Pour centrer les valeurs dans la deuxième colonne */
 }
 
-#solar-zenith {
-    margin-top: 20px;
+#col_image {
+	width: 25%;
 }
 
-#text {
-    padding: 10px;
-    font-size: 2em;
-	border:0px;
-	text-align:center;
-    color: gray;
-    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
-    margin-top: 20px;
-	font-size: 2em; /* taille de police de 2em */
-	
+#col_text {
+	width: 25%;
+	text-align:left;
 }
+
+table.col_3 {
+	text-align:right;
+}
+#col_4 {
+	text-align:right;
+}
+#col_5 {
+	text-align:left;
+}
+
 
 
 
