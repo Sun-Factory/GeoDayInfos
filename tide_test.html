@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./tides/tide.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td rowspan="5" id="col_image"><img src="./pics/Full_moon.png" id="Image_moon"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>High Tide</td>
+            <td id="high-tide-time"></td>
+        </tr>
+        <tr>
+            <td>Low Tide</td>
+            <td id="low-tide-time"></td>
+        </tr>
+        <tr>
+            <td>Tide Height</td>
+            <td id="tide-height"></td>
+        </tr>
+    </table>
+
+    <script>
+        // Préremplissage des coordonnées et de la date
+        var coordinates = {
+            latitude: 48.8566,
+            longitude: 2.3522
+        };
+        var date = new Date();
+
+        // Récupération des données de marée
+        var tides = Tide.getTides(coordinates, date);
+
+        // Affichage des données de marée dans le tableau
+        document.getElementById("high-tide-time").innerHTML = tides.highTideTime;
+        document.getElementById("low-tide-time").innerHTML = tides.lowTideTime;
+        document.getElementById("tide-height").innerHTML = tides.tideHeight;
+    </script>
+</body>
+
+</html>

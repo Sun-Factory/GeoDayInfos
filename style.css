@@ -4,7 +4,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'ma police', sans-serif;
+    font-family: 'Arial', sans-serif;
+	background-color: black;
+    text-align: Right;
 }
 
 form {
@@ -13,8 +15,7 @@ form {
     justify-content: center;
     margin-bottom: 20px;
 	display: flex;
-	width: 100%;
-    
+	width: 90%;
 }
 img {
 	display: flex;
@@ -74,36 +75,38 @@ input[type="text"] {
     margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
 	
 }
-
+#refreshed{
+	width: 10%;
+	margin: auto; /* pour centrer horizontalement l'image */
+}
 #submit-button {
-	width: 100%;
+    display: flex;
+    align-items: center;
+	width: 90%;
     padding: 10px;
     font-size: 2em;
 	text-align:center;
     background-color: gray;
-    color: white;
     margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
+	border-radius: 4px; 
 }
 
-
-}
-body {
-  background-color: black;
-  text-align: center;
-}
 #logo-container {
   margin-top: 50px;
 }
 #Coordonnes {
   margin-top: 50px;
   color: white;
+  border-radius: 4px; 
+
 }
 input, button {
   margin-top: 20px;
-}
+  border-radius: 4px; 
 
+}
 table {
-	width: 100%;
+	width: 90%;
     padding: 10px;
     font-size: 2em;
 	border:0px;
@@ -117,22 +120,19 @@ table {
 	width: 25%;
 }
 
-#col_text {
-	width: 25%;
+#col_left {
 	text-align:left;
 }
 
-table.col_3 {
+#col_right {
 	text-align:right;
 }
-#col_4 {
+#wind-speed {
 	text-align:right;
 }
-#col_5 {
-	text-align:left;
+#wind-direction {
+	text-align:right;
 }
-
-
 
 
 

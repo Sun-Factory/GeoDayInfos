@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="weather">
+    <p id="wind-speed"></p>
+    <p id="wind-direction"></p>
+</div>
+<script>
+const API_KEY = "75f4694d5be7367d385d68f2bb50aca4";
+const lat = 38.722252;
+const lon = -9.139337;
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+  .then(response => response.json())
+  .then(data => {
+    const weatherData = data;
+    const windSpeed = document.getElementById("wind-speed");
+    const windDirection = document.getElementById("wind-direction");
+    windSpeed.innerHTML = `Wind Speed: ${weatherData.wind.speed} m/s`;
+    windDirection.innerHTML = `Wind Direction: ${weatherData.wind.deg} &#176;`;
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+</script>
+
+</body>
+
+</html>
+
