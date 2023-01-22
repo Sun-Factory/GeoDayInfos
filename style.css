@@ -85,9 +85,11 @@ input[type="text"] {
 	margin: auto; /* pour centrer horizontalement l'image */
 }
 #submit-button {
-    display: flex;
+	position: absolute;
+	top:44%;
+	right:15%;
     align-items: center;
-	width: 15%;
+	width: 10%;
 	text-align:center;
     background-color: transparent;
 	border-radius: 4px; 
