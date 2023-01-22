@@ -30,24 +30,21 @@
    <img src="./pics/Earth.png" id="image_entete">
    
 <div class="image-text-container">
-   <a class="image-text" id="date"></a>
-   <a class="image-text2" id="hour"></a>
+   <p class="image-text" id="date"></p>
+   <p class="image-text2" id="hour"></p>
 </div>
-
-<div id="suncalc-results">
-<div class="coordenates">
-<form>
-	  <span class="Nord">N</span>
+<div class="image-text-container2">
+<form><span class="Nord">N</span>
       <label><input type="text" id="latitude" placeholder="Latitude"></label>
 	  <span class="virgule">,</span>
       <label><input type="text" id="longitude" placeholder="Longitude"></label>
 	  <span class="West">W</span>
+</form>
  <button 
  type="submit" id="submit-button" style="display:none;">
  <img id="refreshed" src="./pics/refresh_gray.svg"> 
-
  <script> 
- const form = document.querySelector("form");
+const form = document.querySelector("form");
 const latitudeInput = document.getElementById("latitude");
 const longitudeInput = document.getElementById("longitude");
 const submitBtn = document.getElementById("submit-button");
@@ -75,12 +72,10 @@ form.addEventListener("submit", function(event) {
 	});
 </script>
  </button>
-</form>
 </div>
 
 
-	
-
+<div id="suncalc-results">
 	
 <table>
   <tr>
@@ -201,9 +196,6 @@ form.addEventListener("submit", function(event) {
     console.log(error);
   });
 }
-
-
-
-  </script>
+</script>
   
 </html>

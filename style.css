@@ -15,10 +15,11 @@ div.coordenates {
 	width: 100%;
 }
 #form {
-	
+	position: absolute;
+    top: 350px; /* pour positionner les éléments par rapport au haut de l'image */
     align-items: center;
     content: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 	display: flex;
 	width: 100%;
 	color: transparent;
@@ -27,7 +28,7 @@ div.coordenates {
 input[type="text"] {
   background-color: transparent;
   border: none;
-  color:gray;
+  color:white;
 }
 
 
@@ -36,15 +37,12 @@ img {
     margin-top: 20px; 
 	width: 450px;
     text-align:center;
-	margin-bottom: 10px;
-
-
 }
 
 #image_entete{
 	display: flex;
-    margin-top: 20px; 
-	width: 70%;
+    margin-top: 60px; 
+	width: 60%;
     text-align:center;
 	margin-bottom: 10px;
 }
@@ -74,63 +72,55 @@ img {
 	margin-bottom: 10px;
 }
 input[type="text"] {
+	color:gray;
     margin: 0 10px;
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 2em;
 	text-align:center;
 }
 
 #refreshed{
+    display: inline;
 	width: 100%;
 	margin: auto; /* pour centrer horizontalement l'image */
 }
 #submit-button {
-	position: absolute;
-	top:44%;
-	right:15%;
     align-items: center;
 	width: 10%;
 	text-align:center;
     background-color: transparent;
 	border-radius: 4px; 
+	border:1px;
 }
 
 #longitude{
 		text-align:left;
-		width:12%;
-
+		width:25%;
+	border:1px;
 }
 #latitude{
 		text-align:right;
-		width:12%;
+		width:25%;
 }
 span.virgule {
 	color:gray;
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 span.Nord {
 	color:gray;
-	font-size: 1.5em;
+	font-size: 1.8em;
 }
 span.West {
 	color:gray;
-	font-size: 1.5em;
+	font-size: 1.8em;
 	text-align:right;
 }
 
-#logo-container {
-  margin-top: 50px;
-}
-
-input, button {
-  border-radius: 4px; 
-}
-
 table {
-	width: 90%;
+	width: 100%;
     padding: 10px;
-    font-size: 2em;
+    font-size: 2.6em;
 	border:0px;
 	text-align:left;
     color: gray;
@@ -158,16 +148,25 @@ table {
 
 .image-text-container {
   position: absolute;
-  top: 45%; /* pour positionner les éléments par rapport au haut de l'image */
+  top: 60px; /* pour positionner les éléments par rapport au haut de l'image */
   left: 50%; /* pour centrer les éléments par rapport à l'image */
   transform: translate(-50%, -50%); /* pour centrer les éléments horizontalement et verticalement */
   display: flex; /* pour aligner les éléments côte à côte sur la même ligne */
   justify-content: center; /* pour centrer les éléments horizontalement */
 }
 .image-text, .image-text2 {
-	font-size: 2.5em;
+	font-size: 2em;
 	border:0px;
     color: gray;
   margin: 0 5px; /* pour ajouter un espace de 5px entre les éléments */
 }
 
+.image-text-container2 {
+  color:gray;
+  position: absolute;
+  left: 50%; /* pour centrer les éléments par rapport à l'image */
+  transform: translate(-50%, -50%); /* pour centrer les éléments horizontalement et verticalement */
+  display: flex; /* pour aligner les éléments côte à côte sur la même ligne */
+  justify-content: center; /* pour centrer les éléments horizontalement */
+  margin-bottom:100px;
+}
