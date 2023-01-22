@@ -3,9 +3,6 @@
 <head>
 <script src="./Suncalc/suncalc.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
-
-
-
  <script>
     function getCoordinates() {
       if (navigator.geolocation) {
@@ -14,7 +11,6 @@
         document.getElementById("coordinates").innerHTML = "Geolocation is not supported by this browser.";
       }
     }
-
     function showCoordinates(position) {
      // Récupération des valeurs saisies par l'utilisateur
 		var latitude = document.getElementById("latitude").value;
@@ -22,39 +18,76 @@
 	    document.getElementById('latitude').value = position.coords.latitude;
         document.getElementById('longitude').value = position.coords.longitude;
 	 // Récupération de la date saisie par l'utilisateur
-		var date = new Date();
-		calculateSunData();
+	calculateSunData();
 	}
     getCoordinates();
-	
   </script>
 </head>
 
 
 <body>
-<div>
-</div>	
 
-      <img src="./pics/Earth.png" id="image_entete">
+   <img src="./pics/Earth.png" id="image_entete">
+   
+<div class="image-text-container">
+   <a class="image-text" id="date"></a>
+   <a class="image-text2" id="hour"></a>
+</div>
 
 <div id="suncalc-results">
+<div class="coordenates">
+<form>
+	  <span class="Nord">N</span>
+      <label><input type="text" id="latitude" placeholder="Latitude"></label>
+	  <span class="virgule">,</span>
+      <label><input type="text" id="longitude" placeholder="Longitude"></label>
+	  <span class="West">W</span>
+ <button 
+ type="submit" id="submit-button" style="display:none;">
+ <img id="refreshed" src="./pics/refresh_gray.svg"> 
 
- <form>
-      <label><input type="text" id="latitude" placeholder="Entrez la latitude"></label>
-      <label><input type="text" id="longitude" placeholder="Entrez la longitude"></label>
-</form>	
+ <script> 
+ const form = document.querySelector("form");
+const latitudeInput = document.getElementById("latitude");
+const longitudeInput = document.getElementById("longitude");
+const submitBtn = document.getElementById("submit-button");
+
+latitudeInput.addEventListener("input", function() {
+    if(latitudeInput.value.length > 0 && longitudeInput.value.length > 0){
+        submitBtn.style.display = "block";
+    }else{
+        submitBtn.style.display = "none";
+    }
+});
+longitudeInput.addEventListener("input", function() {
+    if(latitudeInput.value.length > 0 && longitudeInput.value.length > 0){
+        submitBtn.style.display = "block";
+    }else{
+        submitBtn.style.display = "none";
+    }
+});
+submitBtn.addEventListener("click", function() {
+    submitBtn.style.display = "none";
+	calculateSunData();
+});
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+	});
+</script>
+ </button>
+</form>
+</div>
+
+
 	
-	<div 
-	<button id="submit-button" onclick="calculateSunData(); event.preventDefault();"><img id="refreshed" src="./pics/refresh_gray.svg"</button>
-	</div>	
-	
+
 	
 <table>
   <tr>
     <td rowspan="5" id="col_image"><img src="./pics/sun.png" id="Image_sun"></td>
   </tr>
   <tr>
-	<td>Sunrise</td>
+	<td>Dawn</td>
 	<td id="col_right" colspan="2">
     <span id="dawn-time"></span> - <span id="sunrise-time"></span>
 	</td>
@@ -68,8 +101,7 @@
 	  </tr>
   
 	  <tr>
-	  <td>Sunset</td>
-	  
+	  <td>Dusk</td>
 		<td id="col_right" colspan="2">
 		<span id="sunset-time"></span> - <span id="dusk-time"></span> 
 		</td>
@@ -82,11 +114,11 @@
   </tr>
 
     <tr>
-      <td>Wind Speed</td>
+      <td>Speed</td>
       <td id="wind-speed"></td>
     </tr>
     <tr>
-      <td>Wind Direction</td>
+      <td>Direction</td>
       <td id="wind-direction"></td>
     </tr>
 </table>
@@ -127,6 +159,8 @@
       var sunData = SunCalc.getTimes(date, latitude, longitude);
   
 	  // Afficher les données dans la table
+	  document.getElementById("date").innerHTML =date.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+	  document.getElementById("hour").innerHTML =date.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
 	  document.getElementById("sunrise-time").innerHTML = sunData.sunrise.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
 	  document.getElementById("solar-noon-time").innerHTML = sunData.solarNoon.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
 	  document.getElementById("sunset-time").innerHTML = sunData.sunset.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
@@ -154,21 +188,21 @@
 	
 	const API_KEY = "75f4694d5be7367d385d68f2bb50aca4";
 
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
-  .then(response => response.json())
-  .then(data => {
+	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+	.then(response => response.json())
+	.then(data => {
     const weatherData = data;
     const windSpeed = document.getElementById("wind-speed");
     const windDirection = document.getElementById("wind-direction");
     windSpeed.innerHTML = `${weatherData.wind.speed} m/s`;
     windDirection.innerHTML = `${weatherData.wind.deg} &#176;`;
-  })
+	})
   .catch(error => {
     console.log(error);
   });
 }
 
-calculateSunData();
+
 
   </script>
   

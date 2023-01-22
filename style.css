@@ -6,17 +6,31 @@ body {
     justify-content: center;
     font-family: 'Arial', sans-serif;
 	background-color: black;
-    text-align: Right;
+    text-align: center;
 }
-
-form {
-    flex-direction: row;
+div.coordenates {
+	flex-direction: row;
     align-items: center;
     justify-content: center;
+	width: 100%;
+}
+#form {
+	
+    align-items: center;
+    content: center;
     margin-bottom: 20px;
 	display: flex;
-	width: 90%;
+	width: 100%;
+	color: transparent;
 }
+
+input[type="text"] {
+  background-color: transparent;
+  border: none;
+  color:gray;
+}
+
+
 img {
 	display: flex;
     margin-top: 20px; 
@@ -65,46 +79,52 @@ input[type="text"] {
     font-size: 1.5em;
 	text-align:center;
 }
-#date {
-	width: 90%;
-    padding: 10px;
-    font-size: 2em;
-	border:0px;
-	text-align:center;
-    color: gray;
-    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
-	
-}
+
 #refreshed{
-	width: 10%;
+	width: 100%;
 	margin: auto; /* pour centrer horizontalement l'image */
 }
 #submit-button {
     display: flex;
     align-items: center;
-	width: 90%;
-    padding: 10px;
-    font-size: 2em;
+	width: 15%;
 	text-align:center;
-    background-color: gray;
-    margin-bottom: 20px; /* Ajouter un espace de 20px en dessous du bouton */
+    background-color: transparent;
 	border-radius: 4px; 
+}
+
+#longitude{
+		text-align:left;
+		width:12%;
+
+}
+#latitude{
+		text-align:right;
+		width:12%;
+}
+span.virgule {
+	color:gray;
+	font-size: 2em;
+}
+
+span.Nord {
+	color:gray;
+	font-size: 1.5em;
+}
+span.West {
+	color:gray;
+	font-size: 1.5em;
+	text-align:right;
 }
 
 #logo-container {
   margin-top: 50px;
 }
-#Coordonnes {
-  margin-top: 50px;
-  color: white;
-  border-radius: 4px; 
 
-}
 input, button {
-  margin-top: 20px;
   border-radius: 4px; 
-
 }
+
 table {
 	width: 90%;
     padding: 10px;
@@ -134,6 +154,18 @@ table {
 	text-align:right;
 }
 
-
-
+.image-text-container {
+  position: absolute;
+  top: 45%; /* pour positionner les éléments par rapport au haut de l'image */
+  left: 50%; /* pour centrer les éléments par rapport à l'image */
+  transform: translate(-50%, -50%); /* pour centrer les éléments horizontalement et verticalement */
+  display: flex; /* pour aligner les éléments côte à côte sur la même ligne */
+  justify-content: center; /* pour centrer les éléments horizontalement */
+}
+.image-text, .image-text2 {
+	font-size: 2.5em;
+	border:0px;
+    color: gray;
+  margin: 0 5px; /* pour ajouter un espace de 5px entre les éléments */
+}
 
